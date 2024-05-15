@@ -36,7 +36,7 @@ public class MinhaClasseFilterChain {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
                         .username("drm")
-                        .password("12345")
+                        .password("12")
                         .roles("USER")
                         .build();
         return new InMemoryUserDetailsManager(user);
