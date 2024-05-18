@@ -1,0 +1,65 @@
+hello.html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Página de Hello sendo apresentada</title>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    }
+
+    h1.base {
+    color: #333;
+    margin-bottom: 20px;
+    }
+
+    h1 {
+    color: #333;
+    margin-bottom: 20px;
+    }
+
+    form {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin-bottom: 15px;
+    }
+
+    input[type="submit"] {
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    box-sizing: border-box;
+    background-color: #66CDAA;
+    /* Azul suave */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: calc(50% - 11px);
+    /* Ajusta a largura para metade do formulário */
+    }
+
+    input[type="submit"]:hover {
+    background-color: #0056b3;
+    /* Azul mais escuro */
+    }
+</head>
+<body>
+<h1 class="base" th:inline="text">Alooooo Mundo  <span th:remove="tag" sec:authentication="name">Biblioteca - thymeleaf</span>!</h1>
+<h1 >Olá <span th:text="${nomeCasa}"></span></h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sair."/>
+</form>
+</body>
+</html>

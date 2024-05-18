@@ -1,0 +1,92 @@
+consulta.html
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Página de Hello sendo apresentada</title>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    }
+
+    h1 {
+    color: #333;
+    margin-bottom: 20px;
+    }
+
+    form {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    margin-bottom: 15px;
+    }
+
+    label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    }
+
+    input[type="text"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: calc(100% - 22px);
+    }
+
+    input[type="submit"] {
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    box-sizing: border-box;
+    background-color: #66CDAA;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: calc(50% - 11px);
+    }
+
+    input[type="submit"]:hover {
+    background-color: #0056b3;
+    }
+
+    div {
+    margin-bottom: 10px;
+    }
+</head>
+<body>
+<h1>Consultar um cliente</h1>
+<form th:action="@{/consulta}" th:object="${cliente}"  method="get"   >
+    <div>
+        <label for="nome">
+            Nome:
+        </label>
+        <input id="nome" name="nome" th:value="${cliente.nome}">
+    </div>
+    <div>
+        <input type="submit" value="Consultar"/>
+    </div>
+    <div>
+        <h1>Tudo bem Sr(a): <span th:text="${cliente.nome}"></span></h1>
+        <h1>Sua matricula:  <span th:text="${cliente.id}"></span></h1>
+    </div>
+</form>
+<form th:action="@{/cadastro}" th:object="${cliente}"  method="get"   >
+    <div>
+        <input type="submit" value="Cadastrar"/>
+    </div>
+</form>
+</body>
+</html>
