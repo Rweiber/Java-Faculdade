@@ -16,19 +16,23 @@ class Forca {
     public boolean verificarPalpite(char letra) {
         letra = Character.toUpperCase(letra);
         boolean acertou = false;
+
         for (int i = 0; i < palavraSecreta.length(); i++) {
             if (palavraSecreta.charAt(i) == letra) {
                 palavraAtual.setCharAt(i, letra);
-
                 acertou = true;
             }
         }
+
         if (!acertou) {
             tentativasRestantes--;
             if (tentativasRestantes == 0) {
                 jogoAcabou = true;
             }
+        } else if (palavraAtual.toString().equals(palavraSecreta)) {
+            jogoAcabou = true;
         }
+
         return acertou;
     }
 
@@ -72,11 +76,12 @@ class Forca {
             }
         }
 
-        if (jogo.getTentativasRestantes() == 0) {
+        if (jogo.getTentativasRestantes() == 0 && !jogo.getPalavraAtual().equals(jogo.getPalavraSecreta())) {
             System.out.println("Você perdeu! A palavra secreta era: " + jogo.getPalavraSecreta());
         } else {
-            System.out.println("Parabéns! Você ganhou!");
+            System.out.println("Parabéns! Você ganhou! A palavra secreta era: " + jogo.getPalavraSecreta());
         }
         scanner.close();
     }
 }
+
