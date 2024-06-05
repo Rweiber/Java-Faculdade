@@ -1,13 +1,23 @@
-const words = ["javascript", "html", "css", "programacao", "desenvolvimento"];
+const wordsWithHints = [
+    { word: "javascript", hint: "Linguagem de programação usada para web." },
+    { word: "html", hint: "Linguagem de marcação usada para criar páginas web." },
+    { word: "css", hint: "Linguagem de estilo usada para definir a aparência de páginas web." },
+    { word: "programacao", hint: "Processo de escrever código para computadores." },
+    { word: "desenvolvimento", hint: "Processo de criação de software." }
+];
 let selectedWord = '';
+let selectedHint = '';
 let guessedLetters = [];
 let maxAttempts = 6;
 let attempts = 0;
 
 function startGame() {
-    selectedWord = words[Math.floor(Math.random() * words.length)];
+    const selected = wordsWithHints[Math.floor(Math.random() * wordsWithHints.length)];
+    selectedWord = selected.word;
+    selectedHint = selected.hint;
     guessedLetters = [];
     attempts = 0;
+    document.getElementById('hintContainer').innerText = `Dica: ${selectedHint}`;
     document.getElementById('message').innerText = '';
     document.getElementById('restartButton').style.display = 'none';
     updateWordContainer();
