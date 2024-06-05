@@ -1,49 +1,62 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background-color: #f0f0f0;
+    margin: 0;
 }
 
-.container {
-    margin: 50px auto;
-    width: 300px;
+#game-container {
+    text-align: center;
+    background: #fff;
     padding: 20px;
-    background-color: white;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
 }
 
-#wordContainer {
-    font-size: 24px;
-    letter-spacing: 10px;
+#word-container {
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
 }
 
-#lettersContainer {
-    margin-top: 20px;
+#letters-container {
+    margin-bottom: 20px;
+}
+
+#hint-container {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #888;
 }
 
 .letter {
     display: inline-block;
-    width: 20px;
-    height: 30px;
-    text-align: center;
-    border-bottom: 2px solid black;
-    margin: 0 5px;
-    font-size: 24px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #eee;
 }
 
 .letter.correct {
-    border-bottom: 2px solid green;
+    background-color: #8f8;
 }
 
-#message {
-    margin-top: 20px;
-    font-size: 18px;
+.letter.incorrect {
+    background-color: #f88;
 }
 
-#restartButton {
-    margin-top: 20px;
+#reset-button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1em;
     cursor: pointer;
+}
+
+#message-container {
+    font-size: 1.5em;
+    margin-top: 20px;
 }
