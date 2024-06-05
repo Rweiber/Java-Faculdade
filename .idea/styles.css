@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    margin: 50px auto;
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#wordContainer {
+    font-size: 24px;
+    letter-spacing: 10px;
+}
+
+#lettersContainer {
+    margin-top: 20px;
+}
+
+.letter {
+    display: inline-block;
+    width: 20px;
+    height: 30px;
+    text-align: center;
+    border-bottom: 2px solid black;
+    margin: 0 5px;
+    font-size: 24px;
+}
+
+.letter.correct {
+    border-bottom: 2px solid green;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+#restartButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
