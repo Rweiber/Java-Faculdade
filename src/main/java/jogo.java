@@ -1,13 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 class Forca {
     private String palavraSecreta;
+    private String dica;
     private StringBuilder palavraAtual;
     private int tentativasRestantes;
     private boolean jogoAcabou;
 
-    public Forca(String palavraSecreta, int tentativas) {
+    public Forca(String palavraSecreta, String dica, int tentativas) {
         this.palavraSecreta = palavraSecreta.toUpperCase();
+        this.dica = dica;
         this.palavraAtual = new StringBuilder("_".repeat(palavraSecreta.length()));
         this.tentativasRestantes = tentativas;
         this.jogoAcabou = false;
@@ -52,13 +57,30 @@ class Forca {
         return palavraSecreta;
     }
 
+    public String getDica() {
+        return dica;
+    }
+
     public static void main(String[] args) {
+        List<String[]> palavrasEDicas = new ArrayList<>();
+        palavrasEDicas.add(new String[]{"JAVA", "Linguagem de programação popular"});
+        palavrasEDicas.add(new String[]{"PYTHON", "Linguagem de programação com um réptil no nome"});
+        palavrasEDicas.add(new String[]{"ELEFANTE", "O maior animal terrestre"});
+        palavrasEDicas.add(new String[]{"CACHORRO", "Melhor amigo do homem"});
+        palavrasEDicas.add(new String[]{"AVIAO", "Meio de transporte aéreo"});
+
+        Random random = new Random();
+        String[] palavraEDica = palavrasEDicas.get(random.nextInt(palavrasEDicas.size()));
+        String palavraSecreta = palavraEDica[0];
+        String dica = palavraEDica[1];
+
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite a palavra secreta:");
-        String palavraSecreta = scanner.nextLine();
+        System.out.println("Bem-vindo ao jogo da Forca!");
+        System.out.println("Dica: " + dica);
         System.out.println("Digite o número de tentativas:");
         int tentativas = scanner.nextInt();
-        Forca jogo = new Forca(palavraSecreta, tentativas);
+
+        Forca jogo = new Forca(palavraSecreta, dica, tentativas);
 
         while (!jogo.isJogoAcabou()) {
             System.out.println("Palavra atual: " + jogo.getPalavraAtual());
@@ -84,4 +106,3 @@ class Forca {
         scanner.close();
     }
 }
-
