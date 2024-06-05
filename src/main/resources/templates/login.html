@@ -1,81 +1,90 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-  <head>
-    <title>Página de Login Apresentada. </title>
-    <style>
-      body {
- background-color: #f5f5f5;
- font-family: Arial, sans-serif;
- display: flex;
- justify-content: center;
- align-items: center;
- height: 100vh;
-}
+<head>
+  <title>Página de Login Apresentada.</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0; /* Adicionado para remover margens padrão do body */
+    }
 
-.container {
- width: 400px;
- padding: 20px;
- background-color: #ffffff;
- border-radius: 8px;
- box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    .container {
+      width: 400px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-h1 {
- font-size: 24px;
- margin-bottom: 20px;
-}
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
 
-label {
- display: block;
- margin-bottom: 10px;
-}
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
 
-input[type="text"],
-input[type="password"] {
- width: 100%;
- padding: 10px;
- border: 1px solid #ccc;
- border-radius: 4px;
- margin-bottom: 20px;
-}
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      box-sizing: border-box; /* Adicionado para garantir consistência no tamanho dos inputs */
+    }
 
-input[type="submit"] {
- background-color: #007bff;
- color: #ffffff;
- border: none;
- border-radius: 4px;
- padding: 10px 20px;
- cursor: pointer;
-}
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s; /* Adicionado para suavizar a transição de cor */
+    }
 
-input[type="submit"]:hover {
- background-color: #0056b3;
-}
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
 
-    </style>
-  </head>
-  <body>
-    <div th:if="${param.error}">
-      Usuário e senha inválidos.
+    .error-message {
+      color: red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div th:if="${param.error}" class="error-message">
+    Usuário e senha inválidos.
+  </div>
+  <div th:if="${param.logout}" class="error-message">
+    Você deve executar logout.
+  </div>
+  <form th:action="@{/login}" method="post">
+    <h1>Faça seu login</h1>
+    <div>
+      <label>
+        Usuário: <input type="text" name="username"/>
+      </label>
     </div>
-    <div th:if="${param.logout}">
-      Você deve executar logout.
+    <div>
+      <label>
+        Senha: <input type="password" name="password"/>
+      </label>
     </div>
-      <form th:action="@{/login}" method="post">
-        <h1>Faça seu login</h1>
-        <div>
-          <label>
-            Usuário: <input type="text" name="username"/>
-          </label>
-        </div>
-        <div>
-          <label>
-            Senha: <input type="password" name="password"/>
-          </label>
-        </div>
-        <div>
-          <input type="submit" value="Efetuar login"/>
-        </div>
-      </form>
-  </body>
+    <div>
+      <input type="submit" value="Efetuar login"/>
+    </div>
+  </form>
+</div>
+</body>
 </html>
